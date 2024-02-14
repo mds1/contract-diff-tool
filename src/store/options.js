@@ -55,13 +55,13 @@ export const selectExplorer1 = (state) =>
   state.options.network1 &&
   state.chains.list.find(
     (chain) => chain.chainId === parseInt(state.options.network1)
-  ).explorers[0].url;
+  ).explorers[0]?.url;
 export const selectExplorer2 = (state) =>
   state.chains.list.length &&
   state.options.network2 &&
   state.chains.list.find(
     (chain) => chain.chainId === parseInt(state.options.network2)
-  ).explorers[0].url;
+  ).explorers[0]?.url;
 
 // Chains
 export const selectChain1 = (state) =>
