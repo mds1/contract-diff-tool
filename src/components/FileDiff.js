@@ -162,6 +162,10 @@ export default ({
   const explorer1 = useSelectExplorer1();
   const explorer2 = useSelectExplorer2();
 
+  console.log(fileName, similarity * 100);
+  // Never round similarity up to 100%
+  const similarityDigits = similarity * 100 >= 99.5 ? 1 : 0;
+
   const renderAddress = (address, field, source) => (
     <AddressWrap>
       <AddressTitleWrap title={address}>
@@ -287,7 +291,7 @@ export default ({
             </IconButton>
           </Tooltip>
           <TitleWrapper title={fileName}>
-            {fileName} ({(similarity * 100).toFixed(0)}% match)
+            {fileName} ({(similarity * 100).toFixed(similarityDigits)}% match)
           </TitleWrapper>
         </div>
       </SourceHeader>
