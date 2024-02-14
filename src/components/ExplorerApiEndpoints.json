@@ -164,6 +164,10 @@
     "url": "https://api.ftmscan.com"
   },
   {
+    "chainId": 252,
+    "url": "https://api.fraxscan.com"
+  },
+  {
     "chainId": 274,
     "url": "https://explorer.lachain.network"
   },
@@ -650,6 +654,10 @@
   {
     "chainId": 7979,
     "url": "https://doscan.io"
+  },
+  {
+    "chainId": 8453,
+    "url": "https://api.basescan.org"
   },
   {
     "chainId": 8738,
