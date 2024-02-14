@@ -1,8 +1,7 @@
 import { TextField, IconButton, InputAdornment } from "@mui/material";
 import styled from "styled-components";
 import { Search } from "@mui/icons-material";
-import { useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { getEndOfPath } from "../utils/string";
 
 const SearchIconWrapper = styled.div`

@@ -96,7 +96,7 @@ export default ({
       {filteredContracts.map((contract) => {
         const fileName = getEndOfPath(contract.name);
         const diffs = fileDiffCounts[contract.name] || {};
-        const { added, removed, modificationType } = diffs;
+        const { _added, _removed, modificationType } = diffs;
         return (
           <FileHeader
             title={contract.name}

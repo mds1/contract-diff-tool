@@ -31,11 +31,11 @@ const websocketMiddlewareOptions = {
     return JSON.stringify(data);
   },
   reconnectOnClose: true,
-  onOpen: (ws) => {},
+  onOpen: (_ws) => {},
 };
 const reduxWebsocketMiddleware = reduxWebsocket(websocketMiddlewareOptions);
 
-const websocketOnOpenMiddleware = (store) => (next) => (action) => {
+const websocketOnOpenMiddleware = (_store) => (next) => (action) => {
   if (action.type === "REDUX_WEBSOCKET::OPEN") {
     // store.dispatch({ type: "REDUX_WEBSOCKET/OPEN" });
   }

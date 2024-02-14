@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { useTheme } from "../hooks";
-import Navigation from "./Navigation";
 import ChainLoader from "./ChainLoader";
 
 const Wrapper = styled.div``;

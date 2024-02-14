@@ -4,6 +4,7 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
+    "lint": "next lint --fix",
     "fmt": "prettier --write ."
   },
   "dependencies": {
@@ -32,7 +33,14 @@
     "@mui/styled-engine-sc": "npm:@mui/styled-engine-sc@latest"
   },
   "devDependencies": {
+    "@types/node": "20.11.17",
+    "@typescript-eslint/eslint-plugin": "^7.0.1",
+    "@typescript-eslint/parser": "^7.0.1",
     "babel-plugin-import": "^1.13.6",
-    "babel-plugin-styled-components": "^2.0.7"
+    "babel-plugin-styled-components": "^2.0.7",
+    "eslint": "^8.56.0",
+    "eslint-config-next": "^14.1.0",
+    "eslint-config-react": "^1.1.7",
+    "typescript": "^5.3.3"
   }
 }

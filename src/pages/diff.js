@@ -5,8 +5,6 @@ import prettier from "prettier";
 import prettierPluginSolidity from "prettier-plugin-solidity";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
-import { mergeDeep } from "../utils/string";
-import Image from "next/image";
 import {
   useSplitView,
   useHideFiles,
@@ -174,6 +172,16 @@ const HaventStartedText = styled.div`
   font-size: 40px;
   @media (max-width: 990px) {
     font-size: 20px;
+  }
+`;
+
+const Footer = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 10px 30px;
+  margin-bottom: 20px;
+  @media (max-width: 990px) {
+    padding: 10px 10px;
   }
 `;
 
@@ -819,6 +827,19 @@ function App() {
           <div>{diffs}</div>
         </Layout>
       </Results>
+      <Footer>
+        <p>
+          Check out{" "}
+          <a
+            href="https://www.evmdiff.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            EVM Diff
+          </a>{" "}
+          for more diffs
+        </p>
+      </Footer>
     </Wrapper>
   );
 }

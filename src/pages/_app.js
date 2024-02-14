@@ -2,7 +2,6 @@ import "../styles/globals.css";
 import "../vendor/prism.css";
 import "../vendor/prism.js";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
-import CssBaseline from "@mui/material/CssBaseline";
 const darkTheme = createTheme({
   palette: {
     mode: "dark",
@@ -24,14 +23,6 @@ export default function MyApp({ Component, pageProps }) {
           <Head>
             <title>Contract Diffs</title>
             <link rel="icon" href="/icon.png" />
-            <link
-              rel="stylesheet"
-              href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
-            />
-            <link
-              rel="stylesheet"
-              href="https://fonts.googleapis.com/icon?family=Material+Icons"
-            />
           </Head>
           <Layout>
             <Component {...pageProps} />

@@ -13,10 +13,8 @@ import {
 import {
   ExpandMore,
   UnfoldMore,
-  Download,
   MoreHoriz,
   ContentCopy,
-  CopyAll,
   OpenInNew,
 } from "@mui/icons-material";
 import { useState } from "react";
@@ -120,7 +118,7 @@ const customStyles = {
   // splitView: { padding: "0px", margin: "0px" },
 };
 
-const codeFoldMessageRenderer = (str) => {
+const codeFoldMessageRenderer = (_str) => {
   return (
     <Tooltip title="Expand" placement="top">
       <IconButton size="small" edge="end">
