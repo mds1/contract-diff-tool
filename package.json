@@ -5,7 +5,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint --fix",
-    "fmt": "prettier --write ."
+    "fmt": "prettier --write .",
+    "fmt:check": "prettier --check ."
   },
   "dependencies": {
     "@emotion/react": "^11.11.0",
