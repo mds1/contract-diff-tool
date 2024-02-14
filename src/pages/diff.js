@@ -161,10 +161,11 @@ const HaventStarted = styled.div`
   display: flex;
   justify-content: center;
   top: 200px;
+  margin-top: 100px;
+  margin-bottom: 100px;
   @media (max-width: 990px) {
     top: 100px;
   }
-  position: relative;
   display: ${(props) => (props.hide === "true" ? "none" : "")};
 `;
 
