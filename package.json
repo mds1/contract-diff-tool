@@ -15,7 +15,7 @@
     "@mui/styled-engine-sc": "npm:@mui/styled-engine-sc@latest",
     "@reduxjs/toolkit": "^1.3.6",
     "ethereum-checksum-address": "^0.0.8",
-    "next": "latest",
+    "next": "^14.1.0",
     "prettier": "^2.8.8",
     "prettier-plugin-solidity": "^1.1.3",
     "react": "^18.2.0",
