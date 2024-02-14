@@ -657,25 +657,18 @@ function App() {
       <Header>
         <HeaderLeft onClick={() => openAddress("/")}>
           <Flag src="inverted_flag.png" alt="logo" />
-          <div>x48.tools</div>
+          <div>Contract Diffs</div>
         </HeaderLeft>
         <HeaderRight>
           <GitHub
             sx={{ fontSize: 24 }}
             onClick={() =>
-              openAddress("https://github.com/x48115/contract-diff-tool")
+              openAddress("https://github.com/mds1/contract-diff-tool")
             }
-          />
-          <Image
-            src="/discord_logo.svg"
-            width="24"
-            height="24"
-            alt="Discord"
-            onClick={() => openAddress("https://discord.gg/KPhtdR7m2m")}
           />
           <Twitter
             sx={{ fontSize: 24 }}
-            onClick={() => openAddress("https://twitter.com/x48_crypto")}
+            onClick={() => openAddress("https://x.com/msolomon44")}
           />
         </HeaderRight>
       </Header>

@@ -22,7 +22,7 @@ export default function MyApp({ Component, pageProps }) {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <Head>
-            <title>x48.tools</title>
+            <title>Contract Diffs</title>
             <link rel="icon" href="/icon.png" />
             <link
               rel="stylesheet"
