@@ -145,10 +145,6 @@ const copy = (text) => {
   navigator.clipboard.writeText(text);
 };
 
-// Remove all comments and reduce 2+ new lines to 1 new line
-const removeCommentsAndExtraLines = str => str.replace(/^\s*\/\/.*$/gm, '').replace(/\/\*[\s\S]*?\*\//gm, '').replace(/\n{2,}/g, '\n').trim();
-
-
 export default ({
   oldCode,
   newCode,
@@ -300,8 +296,8 @@ export default ({
 
       <HideIfCollapsed collapsed={collapsed}>
         <ReactDiffViewer
-          oldValue={removeCommentsAndExtraLines(oldCode)}
-          newValue={removeCommentsAndExtraLines(newCode)}
+          oldValue={oldCode}
+          newValue={newCode}
           splitView={splitView}
           leftTitle={
             splitView ? renderAddress(address1, 1, oldCode) : undefined

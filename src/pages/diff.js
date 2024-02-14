@@ -18,13 +18,18 @@ import {
 } from "../hooks";
 
 import {
+  Box,
   ToggleButtonGroup,
   SvgIcon,
   ToggleButton,
   Tooltip,
+  IconButton,
+  Switch,
+  FormGroup,
+  FormControlLabel,
 } from "@mui/material";
 
-import { GitHub, Twitter } from "@mui/icons-material";
+import { GitHub, Twitter, HelpOutlined } from "@mui/icons-material";
 
 import { setSplitView, setHideFiles } from "../store/options";
 import ChainSelector from "../components/ChainSelector";
@@ -227,6 +232,15 @@ function App() {
   const [previousNetwork1, setPreviousNetwork1] = useState(network1);
   const [previousNetwork2, setPreviousNetwork2] = useState(network2);
 
+  // Dense mode removes all comments and reduce 2+ new lines to 1 new line
+  const [isDenseMode, setIsDenseMode] = useState(false);
+  const denseMode = (str) =>
+    str
+      .replace(/^\s*\/\/.*$/gm, "")
+      .replace(/\/\*[\s\S]*?\*\//gm, "")
+      .replace(/^\s*[\r\n]/gm, "")
+      .trim();
+
   const chains = useSelectChains();
   const chain1 = useSelectChain1();
   const chain2 = useSelectChain2();
@@ -365,7 +379,7 @@ function App() {
     } else {
       setPerfectMatch(false);
     }
-  }, [code1, code2]);
+  }, [code1, code2, isDenseMode]);
 
   const delay = (time) => {
     return new Promise((resolve) => setTimeout(resolve, time));
@@ -584,7 +598,7 @@ function App() {
         {removed} deletion{removedSuffix}
       </b>
     );
-  }, [filteredContracts]);
+  }, [filteredContracts, isDenseMode]);
 
   const toggleHideFiles = () => {
     dispatch(setHideFiles(hidefiles === "true" ? "fasle" : "true"));
@@ -611,13 +625,17 @@ function App() {
     dispatch(setSplitView(evt.target.value === "split" ? true : false));
   };
 
-  // eslint-disable-next-line
-  const formatCode = (code) =>
-    prettier.format(code, {
+  const formatCode = (code) => {
+    // Format the code using Prettier.
+    const formattedCode = prettier.format(code, {
       parser: "solidity-parse",
-      // eslint-disable-next-line
       plugins: prettierPlugins,
+      printWidth: 100,
     });
+
+    // Apply dense mode filter if required.
+    return isDenseMode ? denseMode(formattedCode) : formattedCode;
+  };
 
   const diffs =
     filteredContracts &&
@@ -753,26 +771,47 @@ function App() {
               </div>
             </LineChanges>
           </CollapseAndText>
-          <ToggleButtonGroup
-            size="small"
-            value={splitView ? "split" : "unified"}
-            exclusive
-            aria-label="Platform"
-            onChange={onViewChange}
-          >
-            <ToggleButton
-              sx={{ paddingLeft: 2, paddingRight: 2 }}
-              value="split"
+          <FormGroup>
+            <FormControlLabel
+              control={
+                <Switch
+                  checked={isDenseMode}
+                  onChange={(event) => setIsDenseMode(event.target.checked)}
+                />
+              }
+              label={
+                <Box sx={{ display: "flex", alignItems: "center" }}>
+                  Dense Mode
+                  <Tooltip title="Removes comments and blank lines">
+                    <IconButton>
+                      <HelpOutlined fontSize="small" />
+                    </IconButton>
+                  </Tooltip>
+                </Box>
+              }
+            />
+
+            <ToggleButtonGroup
+              size="small"
+              value={splitView ? "split" : "unified"}
+              exclusive
+              aria-label="Platform"
+              onChange={onViewChange}
             >
-              Split
-            </ToggleButton>
-            <ToggleButton
-              sx={{ paddingRight: 2, paddingLeft: 2 }}
-              value="unified"
-            >
-              Unified
-            </ToggleButton>
-          </ToggleButtonGroup>
+              <ToggleButton
+                sx={{ paddingLeft: 2, paddingRight: 2 }}
+                value="split"
+              >
+                Split
+              </ToggleButton>
+              <ToggleButton
+                sx={{ paddingRight: 2, paddingLeft: 2 }}
+                value="unified"
+              >
+                Unified
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </FormGroup>
         </Summary>
 
         <Layout hidefiles={hidefiles}>
